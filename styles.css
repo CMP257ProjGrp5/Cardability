@@ -1,0 +1,127 @@
+/*FONTS*/
+
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+/*Rest of the CSS*/
+body{
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*Navbar*/
+nav{
+    background-color: #D9D9D9;
+    align-content: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+
+}
+
+nav button {
+    border-style: none;
+    background-color: rgba(0,0,0,0.1);
+    height: 64px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin-left: 2rem;
+    border-radius:  4px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+nav p#title {
+    position:relative;
+    font-size: 64px;
+    display: inline;
+    top:16px;
+    left: 16px;
+    padding-right: 16px;
+    border-right: 0.15rem solid gray;
+}
+
+nav button#create-button{
+    background-color: seagreen;
+    color: white;
+}
+
+nav button#session-button{
+    background-color: #197292;
+    color: white;
+}
+
+
+
+section#card-container{
+    overflow-y:scroll;
+}
