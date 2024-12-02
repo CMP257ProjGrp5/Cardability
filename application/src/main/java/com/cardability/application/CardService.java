@@ -25,8 +25,11 @@ public class CardService {
 
     public void changeCardColor(Long cardId, int r, int g, int b){
         Card card = cardRepository.findOne(cardId);
-
-
+        card.setColorR(r);
+        card.setColorG(g);
+        card.setColorB(b);
 
     }
+
+    
 }

@@ -1,30 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <nav>
-        <p id="title" class="roboto-thin-italic">CardAid</p>
-        <button id="create-button" class="roboto-regular">Create Card</button>
-        <button id="session-button" class="roboto-regular">Start Session</button>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Cardability</title>
+        <!-- LINKS -->
+         <!-- Custom CSS -->
+         <link rel="import" href="card.html">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+         <script src="https://cdn.tailwindcss.com"></script>
+         <link href="style.css" rel="stylesheet">
+    </head>
+    
+    <header>
+        <!-- LOGO SECTION - 2 ELEMENTS -->
+        <div class="logo-section">
+            <!-- LOGO IMAGE HERE -->
+             <img class="logo-icon" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Fcards-icon%2Fcards-icon-14.jpg&f=1&nofb=1&ipt=af302eddf33f58f6fb3e7690c22fbeee88394c7fad48579e9427376a6398215d&ipo=images">
+            <h1 class="logo-title raleway-500">Cardability</h1>
+        </div>
 
-    </nav>
+        <!-- SOCIAL SECTION - 3 ELEMENTS -->
+        <div class="social-menu">
+            <button class="users-btn"><i class="fi fi-rs-users users"></i></button><!-- USERS -->
+            <button class="share-btn"><i class="fi fi-rr-link-alt share"></i></button> <!-- SHARE -->
+            <!-- SEARCH -->
+            <div
+              class="p-5 overflow-hidden w-[60px] h-[60px] hover:w-[270px] bg-[#4070f4] shadow-[2px_2px_20px_rgba(0,0,0,0.08)] rounded-full flex group items-center hover:duration-300 duration-300"
+            >
+              <div class="flex items-center justify-center fill-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Isolation_Mode"
+                  data-name="Isolation Mode"
+                  viewBox="0 0 24 24"
+                  width="22"
+                  height="22"
+                >
+                  <path
+                    d="M18.9,16.776A10.539,10.539,0,1,0,16.776,18.9l5.1,5.1L24,21.88ZM10.5,18A7.5,7.5,0,1,1,18,10.5,7.507,7.507,0,0,1,10.5,18Z"
+                  ></path>
+                </svg>
+              </div>
+              <input
+                type="text"
+                class="outline-none text-[20px] bg-transparent w-full text-white font-normal px-4"
+              />
+            </div>
+            
+        </div>
 
-    <div class="container">
-        <section id="sidebar">
+        <!-- USER SECTION WITH DROPDOWN -->
+        <div class="user-menu">
+            <text class="username raleway-500" id="username">username</text>
+            <!-- Dropdown -->
+            <label class="popup">
+            <input type="checkbox" />
+            <div tabindex="0" class="burger">
+                <svg
+                viewBox="0 0 24 24"
+                fill="white"
+                height="20"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+                >
+                <path
+                    d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z"
+                ></path>
+                </svg>
+            </div>
+            <nav class="popup-window">
+                <legend>Quick Start</legend>
+                <ul>
+                <li>
+                    <button>
+                    <span>Log In</span>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                    <span>Sign Up</span>
+                    </button>
+                </li>
+                </ul>
+            </nav>
+            </label>
+        </div>
+    </header>
 
-        </section>
+    <body>
+        <!-- CARD NAME CHANGE POP UP - HIDDEN UNTIL SHOWN WHEN NAME BUTTON CLICKED -->
+        <input placeholder="Card Name" class="name-input raleway-500" name="card-name" type="text" id="card-name-input" autofo>
 
-        <section id="card-container"> 
+        <!-- CARD DESCRIPTION INPUT - HIDDEN UNTIL SHOWN WHEN DESC BUTTON CLICKED -->
+        <textarea placeholder="Description" class="desc-input raleway-500" name="card-desc" rows="4" id="card-desc-input" autofocus></textarea>
 
-        </section>
-    </div>
-</body>
+        <!-- COLOR CHANGE POP UP - HIDDEN UNTIL SHOWN WHEN COLOR BUTTON CLICKED -->
+        <div class="radio-input" id="card-color-input">
+            <input value="color-1" name="color" id="color-1" type="radio">
+            <label for="color-1">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Check"> <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#ffffff" d="M6 12L10.2426 16.2426L18.727 7.75732" id="Vector"></path> </g> </g></svg>
+              </span>
+            </label>
+          
+            <input value="color-2" name="color" id="color-2" type="radio">
+            <label for="color-2">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Check"> <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#ffffff" d="M6 12L10.2426 16.2426L18.727 7.75732" id="Vector"></path> </g> </g></svg>
+              </span>
+            </label>
+          
+            <input value="color-3" name="color" id="color-3" type="radio">
+            <label for="color-3">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Check"> <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#ffffff" d="M6 12L10.2426 16.2426L18.727 7.75732" id="Vector"></path> </g> </g></svg>
+              </span>
+            </label>
+
+            <input value="color-4" name="color" id="color-4" type="radio">
+            <label for="color-4">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Check"> <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#ffffff" d="M6 12L10.2426 16.2426L18.727 7.75732" id="Vector"></path> </g> </g></svg>
+              </span>
+            </label>
+
+            <input value="color-5" name="color" id="color-5" type="radio">
+            <label for="color-5">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Check"> <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#ffffff" d="M6 12L10.2426 16.2426L18.727 7.75732" id="Vector"></path> </g> </g></svg>
+              </span>
+            </label>
+        
+        </div>
+
+        <!-- CARDS GET DYNAMICALLY ADDED AND REMOVED HERE NEXT TO THE DEFAULT HELP CARD -->
+         <div class="card-container" id="card-container">
+            <div id="0">
+                <div class="card w-full max-w-sm overflow-hidden" id="card" onclick="setID(this.parentElement.id)">
+                    <div class="w-full h-56 place-content-center icon-container" id="card-icon-container">
+                        <i class="fi fi-br-heart"></i>
+                    </div>
+                
+                    <div class="px-6 py-4 bg-gray-900">
+                        <h1 class="text-xl text-gray-800 dark:text-white raleway-900" id="card-name">Hi!</h1>
+                        <p class="py-2 text-gray-700 dark:text-gray-400 raleway-500" id="card-desc">This is your dashboard. Add cards using the toolbar and edit them as you like!</p>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+        <!-- TOOLBAR - FIXED LOCATION - SCROLLS WITH VIEWPORT -->
+    </body>
+
+    <footer>
+        <div class="tool-bar">
+            <!-- <button class="add-btn" id="add-btn"><i class="fi fi-rr-square-plus add"></i></button> --> 
+            <!-- CREATE CARD ICON -->
+            <button
+            title="Add New"
+            class="group cursor-pointer outline-none hover:rotate-90 duration-300"
+            id="add-btn"
+            >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50px"
+                height="50px"
+                viewBox="0 0 24 24"
+                class="stroke-green-400 fill-none group-hover:fill-green-800 group-active:stroke-green-200 group-active:fill-green-600 group-active:duration-0 duration-300"
+            >
+                <path
+                d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                stroke-width="1.5"
+                ></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+            </svg>
+            </button>
+
+            <!-- NAME -->
+            <button class="name-btn" id="name-btn"><i class="fi fi-rr-text-size name-sel"></i></button>
+            <!-- COLOR -->
+            <button class="color-btn" id="color-btn"><i class="fi fi-rr-palette color-sel"></i></button>
+            <!-- DESCRIPTION -->
+            <button class="desc-btn" id="desc-btn"><i class="fi fi-rr-align-center desc-sel"></i></button>
+            <!-- ICON -->
+            <button class="icon-btn" id="icon-btn"><i class="fi fi-rs-pixabay icon-sel"></i></button>
+            <!-- DELETE -->
+            <button class="bin-button" id="del-btn">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 39 7"
+                class="bin-top"
+            >
+                <line stroke-width="4" stroke="white" y2="5" x2="39" y1="5"></line>
+                <line
+                stroke-width="3"
+                stroke="white"
+                y2="1.5"
+                x2="26.0357"
+                y1="1.5"
+                x1="12"
+                ></line>
+            </svg>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 33 39"
+                class="bin-bottom"
+            >
+                <mask fill="white" id="path-1-inside-1_8_19">
+                <path
+                    d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
+                ></path>
+                </mask>
+                <path
+                mask="url(#path-1-inside-1_8_19)"
+                fill="white"
+                d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                ></path>
+                <path stroke-width="4" stroke="white" d="M12 6L12 29"></path>
+                <path stroke-width="4" stroke="white" d="M21 6V29"></path>
+            </svg>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 89 80"
+                class="garbage"
+            >
+                <path
+                fill="white"
+                d="M20.5 10.5L37.5 15.5L42.5 11.5L51.5 12.5L68.75 0L72 11.5L79.5 12.5H88.5L87 22L68.75 31.5L75.5066 25L86 26L87 35.5L77.5 48L70.5 49.5L80 50L77.5 71.5L63.5 58.5L53.5 68.5L65.5 70.5L45.5 73L35.5 79.5L28 67L16 63L12 51.5L0 48L16 25L22.5 17L20.5 10.5Z"
+                ></path>
+            </svg>
+            </button>
+
+         </div>
+    </footer>
+    <script src="script.js"></script>
 </html>
