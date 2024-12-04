@@ -24,6 +24,10 @@ public class Card {
     private int colorG;
     private int ColorB;
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
