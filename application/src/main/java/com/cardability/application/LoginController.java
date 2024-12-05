@@ -18,7 +18,7 @@ public class LoginController
             return redirectUrl;
         } catch (RuntimeException e) {
             model.addAttribute("error", "Login failed: " + e.getMessage());
-            return "login";
+            throw new RuntimeException("Invalid Login Credentials");
         }
     }
 }

@@ -32,7 +32,6 @@ public class SecurityConfig
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder
-                // configure your authentication provider
                 .inMemoryAuthentication()
                 .withUser("user")
                 .password("{noop}password")
