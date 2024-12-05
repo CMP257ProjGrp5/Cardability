@@ -13,9 +13,12 @@ public class CardService {
     public Card createCard(Card card){
         return cardRepository.save(card);
     }
+    public Card findCardById(Long Id) {return cardRepository.findOne(Id);}
 
-    public void changeCardName(Card card, String name){
+    public void changeCardName(Long cardId, String name){
+        Card card = cardRepository.findOne(cardId);
         card.setName(name);
+        cardRepository.updateCard(card.getName(),card.getId());
     }
 
     public void changeCardDescription(Long cardId, String descrption){
@@ -28,8 +31,12 @@ public class CardService {
         card.setColorR(r);
         card.setColorG(g);
         card.setColorB(b);
-
+        cardRepository.updateCard(r,g,b,card.getId());
     }
 
-    
+    public void deleteCard(Long cardId){
+        Card card=cardRepository.findOne(cardId);
+        cardRepository.delete(card);
+    }
+
 }
