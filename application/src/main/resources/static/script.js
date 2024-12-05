@@ -215,48 +215,40 @@ function setID(id) {
   }
 }
 
-function registerUser (event) {
+function registerUser(event) {
+  event.preventDefault(); // Prevent the default form submission
 
-    event.preventDefault(); // Prevent the default form submission
-    
-    // Gather form data
-    const username = document.getElementById('Email').value;
-    const password = document.getElementById('Password').value;
-    
-    // add if we have time!
-    const passwordconf = document.getElementById('PasswordConfirmation').value;
+  // Gather form data
+  const username = document.getElementById("Email").value;
+  const password = document.getElementById("Password").value;
 
-    // Create the data object
-    const data = {
-        username: username,
-        password: password
+  // add if we have time!
+  const passwordconf = document.getElementById("PasswordConfirmation").value;
 
-    };
+  // Create the data object
+  const data = {
+    username: username,
+    password: password,
+  };
 
+  // Create an AJAX request
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:8080/register", true); // Adjust the URL as needed
+  xhr.setRequestHeader("Content-Type", "application/json");
 
-    // Create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8080/register', true); // Adjust the URL as needed
-    xhr.setRequestHeader('Content-Type', 'application/json');
+  // Set up a callback function to handle the response
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      document.getElementById("responseMessage").innerText =
+        "Registration successful!";
+    } else {
+      document.getElementById("responseMessage").innerText =
+        "Registration failed: " + xhr.responseText;
+    }
+  };
 
-
-    // Set up a callback function to handle the response
-    xhr.onload = function() {
-
-        if (xhr.status === 200) {
-
-            document.getElementById('responseMessage').innerText = 'Registration successful!';
-
-        } else {
-
-            document.getElementById('responseMessage').innerText = 'Registration failed: ' + xhr.responseText;
-
-        }
-
-    };
-
-    // Send the request with the JSON data
-    xhr.send(JSON.stringify(data));
+  // Send the request with the JSON data
+  xhr.send(JSON.stringify(data));
 }
 
-document.getElementById('Submit').onclick = registerUser;
+document.getElementById("Submit").onclick = registerUser;
