@@ -24,6 +24,7 @@ public class CardService {
     public void changeCardDescription(Long cardId, String descrption){
         Card card = cardRepository.findOne(cardId);
         card.setDescription(descrption);
+        cardRepository.updateCard(card.getId(),card.getDescription());
     }
 
     public void changeCardColor(Long cardId, int r, int g, int b){
