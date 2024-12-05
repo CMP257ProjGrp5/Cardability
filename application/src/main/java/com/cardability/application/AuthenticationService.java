@@ -11,29 +11,33 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
 
     @Autowired
-    private AuthenticationManager authMan;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserService userService;
 
-    public String login(String username, String password){
-        Authentication authentication = authMan.authenticate(
-                new UsernamePasswordAuthenticationToken(username, password)
-        );
-
-        if (authentication.isAuthenticated()){
+    public String login(String username, String password) {
+        Authentication authentication = authenticateUser(username, password);
+        if (authentication.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
             User currentUser = (User) authentication.getPrincipal();
-            return "redirect:/user/" + currentUser.getId();
-        }
-        else{
+            return buildRedirectUrl(currentUser);
+        } else {
             throw new RuntimeException("Invalid Login Credentials");
         }
+    }
+
+    private Authentication authenticateUser(String username, String password) {
+        return authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(username, password)
+        );
+    }
+
+    private String buildRedirectUrl(User user) {
+        return "redirect:/user/" + user.getId();
     }
 
     public void logout() {
         SecurityContextHolder.clearContext();
     }
-
 }
