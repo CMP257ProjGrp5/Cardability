@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Cardability</title>
+        <!-- LINKS -->
+         <!-- Custom CSS -->
+         <link rel="import" href="card.html">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+         <script src="https://cdn.tailwindcss.com"></script>
+         <link href="style.css" rel="stylesheet">
+    </head>
+    
+    <header>
+        <!-- LOGO SECTION - 2 ELEMENTS -->
+        <div class="logo-section">
+            <!-- LOGO IMAGE HERE -->
+             <img class="logo-icon" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Fcards-icon%2Fcards-icon-14.jpg&f=1&nofb=1&ipt=af302eddf33f58f6fb3e7690c22fbeee88394c7fad48579e9427376a6398215d&ipo=images">
+            <h1 class="logo-title raleway-500">Cardability</h1>
+        </div>
+
+        <!-- USERNAME OF PERSON SHARING THE CARDS -->
+        <div class="user-menu">
+            <text class="username raleway-500" id="username">username</text>
+            <!-- Dropdown -->
+            <label class="popup">
+            <input type="checkbox" />
+            <div tabindex="0" class="burger">
+                <svg
+                viewBox="0 0 24 24"
+                fill="white"
+                height="20"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+                >
+                <path
+                    d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z"
+                ></path>
+                </svg>
+            </div>
+            </label>
+        </div>
+    </header>
+
+    <body>
+
+        <!-- CARDS GET DYNAMICALLY ADDED AND REMOVED HERE NEXT TO THE DEFAULT HELP CARD -->
+         <div class="card-container" id="card-container">
+            <div id="0">
+                <div class="card w-full max-w-sm overflow-hidden" id="card" onclick="setID(this.parentElement.id)">
+                    <div class="w-full h-56 place-content-center icon-container" id="card-icon-container">
+                        <i class="fi fi-br-heart"></i>
+                    </div>
+                
+                    <div class="px-6 py-4 bg-gray-900">
+                        <h1 class="text-xl text-gray-800 dark:text-white raleway-900" id="card-name">Hi!</h1>
+                        <p class="py-2 text-gray-700 dark:text-gray-400 raleway-500" id="card-desc">This is your dashboard. Add cards using the toolbar and edit them as you like!</p>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+        <!-- TOOLBAR - FIXED LOCATION - SCROLLS WITH VIEWPORT -->
+    </body>
+    <script src="script.js"></script>
+</html>
