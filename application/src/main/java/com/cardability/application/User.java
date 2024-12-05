@@ -2,7 +2,10 @@ package com.cardability.application;
 
 import jakarta.persistence.*;
 
-@Table(schema = "User")
+import java.util.HashSet;
+import java.util.Set;
+
+@Table(schema = "cardability", name = "users")
 @Entity
 public class User {
 
@@ -10,9 +13,13 @@ public class User {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    String username;
+    private String username;
 
-    String password;
+    private String password;
+
+    @OneToMany(mappedBy = "users")
+    private Set<Card> cards = new HashSet<>();
+
 
     public Long getId() {
         return id;

@@ -2,7 +2,7 @@ package com.cardability.application;
 
 import jakarta.persistence.*;
 
-@Table(schema = "Card")
+@Table(schema = "cardability", name = "cards")
 @Entity
 public class Card {
 
@@ -24,6 +24,10 @@ public class Card {
     public Long getId() {
         return id;
     }
+
+    @ManyToOne
+    @JoinColumn(name="userId")
+    private User users;
 
     public String getName() {
         return name;

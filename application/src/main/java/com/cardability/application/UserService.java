@@ -29,4 +29,7 @@ public class UserService implements UserDetailsService {
                 authorities
         );
     }
+
+    public User registerNewUserAccount(UserDto userDto) {
+    }
 }
