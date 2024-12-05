@@ -5,29 +5,22 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 public class UserDto {
     @NotNull
-    private String firstName;
+    private String username;
 
-    @NotNull
-    private String lastName;
+
 
     @NotNull
     private String password;
     private String matchingPassword;
 
-    public String getFirstName() {
-        return firstName;
+
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

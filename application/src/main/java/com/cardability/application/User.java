@@ -20,6 +20,11 @@ public class User {
     @OneToMany(mappedBy = "users")
     private Set<Card> cards = new HashSet<>();
 
+    public User(UserDto userDto) {
+        this.username = userDto.getUsername();
+        this.password = userDto.getPassword();
+    }
+
 
     public Long getId() {
         return id;
