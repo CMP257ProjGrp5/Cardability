@@ -2,6 +2,8 @@ package com.cardability.application;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,4 +24,20 @@ public class SecurityConfig
                 .logout(withDefaults());
         return http.build();
     }
+
+
+    @Bean
+    public AuthenticationManager authManager(HttpSecurity http)
+            throws Exception {
+        AuthenticationManagerBuilder authenticationManagerBuilder =
+                http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder
+                // configure your authentication provider
+                .inMemoryAuthentication()
+                .withUser("user")
+                .password("{noop}password")
+                .roles("USER");
+        return authenticationManagerBuilder.build();
+    }
+
 }

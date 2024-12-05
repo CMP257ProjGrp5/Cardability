@@ -3,6 +3,8 @@ package com.cardability.application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CardService {
 
@@ -13,31 +15,33 @@ public class CardService {
     public Card createCard(Card card){
         return cardRepository.save(card);
     }
-    public Card findCardById(Long Id) {return cardRepository.findOne(Id);}
+    public Optional<Card> findCardById(Long Id) {return cardRepository.findById(Id);}
 
-    public void changeCardName(Long cardId, String name){
-        Card card = cardRepository.findOne(cardId);
-        card.setName(name);
-        cardRepository.updateCard(card.getName(),card.getId());
+    public void changeCardName(Long cardId, String name) {
+        cardRepository.findById(cardId).ifPresent(card -> {
+            card.setName(name);
+            cardRepository.updateCardName(card.getName(), card.getId());
+        });
     }
 
-    public void changeCardDescription(Long cardId, String descrption){
-        Card card = cardRepository.findOne(cardId);
-        card.setDescription(descrption);
-        cardRepository.updateCard(card.getId(),card.getDescription());
+    public void changeCardDescription(Long cardId, String description) {
+        cardRepository.findById(cardId).ifPresent(card -> {
+            card.setDescription(description);
+            cardRepository.updateCardDescription(card.getDescription(), card.getId());
+        });
     }
 
-    public void changeCardColor(Long cardId, int r, int g, int b){
-        Card card = cardRepository.findOne(cardId);
-        card.setColorR(r);
-        card.setColorG(g);
-        card.setColorB(b);
-        cardRepository.updateCard(r,g,b,card.getId());
+    public void changeCardColor(Long cardId, int r, int g, int b) {
+        cardRepository.findById(cardId).ifPresent(card -> {
+            card.setR(r);
+            card.setG(g);
+            card.setB(b);
+            cardRepository.updateCardColor(r, g, b, card.getId());
+        });
     }
 
-    public void deleteCard(Long cardId){
-        Card card=cardRepository.findOne(cardId);
-        cardRepository.delete(card);
+    public void deleteCard(Long cardId) {
+        cardRepository.findById(cardId).ifPresent(cardRepository::delete);
     }
 
 }

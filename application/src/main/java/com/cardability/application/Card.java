@@ -17,9 +17,9 @@ public class Card {
         return (int) Math.max(0, Math.min(255, val));
     }
 
-    private int colorR;
-    private int colorG;
-    private int ColorB;
+    private int r;
+    private int g;
+    private int b;
 
     public Long getId() {
         return id;
@@ -41,27 +41,27 @@ public class Card {
         this.description = description;
     }
 
-    public int getColorR() {
-        return colorR;
+    public int getR() {
+        return r;
     }
 
-    public void setColorR(int colorR) {
-        this.colorR = clampRGB(colorR);
+    public void setR(int r) {
+        this.r = clampRGB(r);
     }
 
-    public int getColorG() {
-        return colorG;
+    public int getG() {
+        return g;
     }
 
-    public void setColorG(int colorG) {
-        this.colorG = clampRGB(colorG);
+    public void setG(int g) {
+        this.g = clampRGB(g);
     }
 
-    public int getColorB() {
-        return ColorB;
+    public int getB() {
+        return b;
     }
 
-    public void setColorB(int colorB) {
-        ColorB = clampRGB(colorB);
+    public void setB(int b) {
+        this.b = clampRGB(b);
     }
 }
