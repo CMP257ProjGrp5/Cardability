@@ -258,3 +258,5 @@ function registerUser (event) {
     // Send the request with the JSON data
     xhr.send(JSON.stringify(data));
 }
+
+document.getElementById('Submit').onclick = registerUser;
