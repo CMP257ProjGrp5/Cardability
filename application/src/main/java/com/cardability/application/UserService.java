@@ -31,6 +31,6 @@ public class UserService implements UserDetailsService {
     }
 
     public User registerNewUserAccount(UserDto userDto) {
-        return new User(userDto);   
+        return new User(userDto);
     }
 }
